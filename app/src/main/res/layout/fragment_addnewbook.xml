@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/roboto"
+            android:text="Об авторе:"
+            android:textSize="30dp" />
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_addnewbook" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/rTextSurname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/author">
+
+        <EditText
+            android:id="@+id/rSurname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:hint="Фамилия"
+            android:padding="20dp"
+            android:textSize="14sp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/rTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rTextSurname">
+
+
+        <EditText
+            android:id="@+id/rName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:hint="Имя"
+            android:padding="20dp"
+            android:textSize="14sp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/rTextPatronymic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rTextName">
+
+
+        <EditText
+            android:id="@+id/rPatronymic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:hint="Отчество"
+            android:padding="20dp"
+            android:textSize="14sp" />
+    </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/book"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rTextPatronymic"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/roboto"
+            android:text="О книге:"
+            android:textSize="30dp" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/rTextBookname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/book">
+
+        <EditText
+            android:id="@+id/rBookname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:hint="Название книги"
+            android:padding="20dp"
+            android:textSize="14sp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/rTextISBN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rTextBookname">
+
+
+        <EditText
+            android:id="@+id/rISBN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:hint="ISBN"
+            android:padding="20dp"
+            android:textSize="14sp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/rTextGenre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rTextISBN">
+
+
+        <EditText
+            android:id="@+id/rGenre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:hint="Жанр"
+            android:padding="20dp"
+            android:textSize="14sp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/rTextDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rTextGenre">
+
+
+        <EditText
+            android:id="@+id/rDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:hint="Описание"
+            android:padding="20dp"
+            android:textSize="14sp" />
+    </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rTextDescription"
+            android:layout_marginTop="5dp"
+            android:background="@color/colorPrimary"
+            android:text="Добавить"
+            android:textColor="@android:color/white" />
+    </RelativeLayout>
+</ScrollView>
