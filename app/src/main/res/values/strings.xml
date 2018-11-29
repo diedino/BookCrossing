@@ -3,4 +3,15 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="genre_array">
+        <item>Жанр</item>
+        <item>Эпос</item>
+        <item>Лирика</item>
+        <item>Драма</item>
+        <item>Публицистика</item>
+        <item>Наука</item>
+        <item>Образование</item>
+        <item>Компьютеры</item>
+    </string-array>
 </resources>

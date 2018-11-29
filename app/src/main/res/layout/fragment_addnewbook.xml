@@ -34,7 +34,6 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:hint="Фамилия"
-            android:padding="20dp"
             android:textSize="14sp" />
     </android.support.design.widget.TextInputLayout>
 
@@ -52,7 +51,6 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:hint="Имя"
-            android:padding="20dp"
             android:textSize="14sp" />
     </android.support.design.widget.TextInputLayout>
 
@@ -70,7 +68,6 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:hint="Отчество"
-            android:padding="20dp"
             android:textSize="14sp" />
     </android.support.design.widget.TextInputLayout>
 
@@ -97,7 +94,6 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:hint="Название книги"
-            android:padding="20dp"
             android:textSize="14sp" />
     </android.support.design.widget.TextInputLayout>
 
@@ -115,44 +111,35 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:hint="ISBN"
-            android:padding="20dp"
             android:textSize="14sp" />
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/rTextGenre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rTextISBN">
-
-
-        <EditText
-            android:id="@+id/rGenre"
-            android:layout_width="match_parent"
+        <Spinner
+            android:id="@+id/genre_spinner"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/rTextISBN"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:hint="Жанр"
-            android:padding="20dp"
-            android:textSize="14sp" />
-    </android.support.design.widget.TextInputLayout>
+            android:entries="@array/genre_array"
+            android:paddingTop="20dp" />
 
-    <android.support.design.widget.TextInputLayout
+        <android.support.design.widget.TextInputLayout
         android:id="@+id/rTextDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rTextGenre">
+        android:layout_below="@+id/genre_spinner">
 
 
-        <EditText
-            android:id="@+id/rDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:hint="Описание"
-            android:padding="20dp"
-            android:textSize="14sp" />
+            <EditText
+                android:id="@+id/rDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:hint="Описание"
+                android:textSize="14sp" />
     </android.support.design.widget.TextInputLayout>
 
         <Button
