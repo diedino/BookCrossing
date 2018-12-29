@@ -9,8 +9,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toolbar;
 
 public class AddNewBookFragment extends Fragment {
@@ -42,10 +44,23 @@ public class AddNewBookFragment extends Fragment {
                 transaction.add(R.id.fragment_container, fragment).commit();
             }
         });
-        Spinner spinner = (Spinner)getView().findViewById(R.id.genre_spinner);
+        Spinner spinner = getView().findViewById(R.id.genre_spinner);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(getActivity().getApplicationContext(),
                 R.array.genre_array, R.layout.spinner_item);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                ((TextView) parentView.getChildAt(0)).setTextColor(0x00000000);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                ((TextView) parentView.getChildAt(0)).setTextColor(0x00000000);
+            }
+
+        });
     }
 }
