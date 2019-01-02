@@ -1,5 +1,6 @@
 package krasnov.bookcrossing;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,10 +17,34 @@ import android.widget.TextView;
 import android.widget.Toolbar;
 
 public class AddNewBookFragment extends Fragment {
+
+    private FragmentTransaction ft;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_addnewbook, container, false);
+        View view = inflater.inflate(R.layout.fragment_addnewbook, container, false);
+
+        Spinner spinner = view.findViewById(R.id.genre_spinner);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(getContext(),
+                R.array.genre_array, R.layout.spinner_item);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                ((TextView) parentView.getChildAt(0)).setTextColor(Color.GRAY);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                ((TextView) parentView.getChildAt(0)).setTextColor(Color.GRAY);
+            }
+
+        });
+
+        return view;
     }
 
     @Override
@@ -32,35 +57,12 @@ public class AddNewBookFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ListFragment fragment = new ListFragment();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                /*
-                transaction.setCustomAnimations(R.anim.exit_from_right,
-                        R.anim.enter_from_right,
-                        R.anim.exit_from_right,
-                        R.anim.enter_from_right);
-                transaction.addToBackStack(null);
-                */
-                transaction.add(R.id.fragment_container, fragment).commit();
+                ft = getFragmentManager().beginTransaction();
+                ft.setCustomAnimations(R.anim.slide_in_left,
+                        R.anim.slide_in_right);
+                ft.addToBackStack(null);
+                ft.add(R.id.fragment_container, fragment).commit();
             }
-        });
-        Spinner spinner = getView().findViewById(R.id.genre_spinner);
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(getActivity().getApplicationContext(),
-                R.array.genre_array, R.layout.spinner_item);
-        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                ((TextView) parentView.getChildAt(0)).setTextColor(0x00000000);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                ((TextView) parentView.getChildAt(0)).setTextColor(0x00000000);
-            }
-
         });
     }
 }

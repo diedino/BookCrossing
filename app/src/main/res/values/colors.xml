@@ -3,4 +3,16 @@
     <color name="colorPrimary">#E98C1C</color>
     <color name="colorPrimaryDark">#B96A0B</color>
     <color name="colorAccent">#D81B60</color>
+
+
+    <color name="gradEnd">#ff6a00</color>
+    <color name="gradStart">#ffb62a</color>
+    <color name="circleBorder">#50FFFFFF</color>
+    <color name="solidCircle">#AAFFFFFF</color>
+    <color name="booksTaken">#FF8F40</color>
+    <color name="booksGiven">#FFAD73</color>
+    <color name="grey">#E5E5E5</color>
+    <color name="white">#FFFFFF</color>
+    <color name="address">#2F7092</color>
+    <color name="headings">#E98B1C</color>
 </resources>

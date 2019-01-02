@@ -2,7 +2,8 @@ package krasnov.bookcrossing;
 
 public class Author {
     String name, surname, patronymic;
-    public Author(String name, String surname, String patronymic){
+
+    public Author(String name, String surname, String patronymic) {
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
@@ -31,11 +32,19 @@ public class Author {
     public void setPatronymic(String patronymic) {
         this.patronymic = patronymic;
     }
-    public String toString(){
-        return String.valueOf(getName().charAt(0))+
-                "."+
-                String.valueOf(getPatronymic().charAt(0))+
-                "."+
-                " "+getSurname();
+
+    public String toString() {
+        if (getPatronymic().isEmpty() && getName().isEmpty())
+                return getSurname();
+        if (getPatronymic().isEmpty() && !getName().isEmpty())
+            return String.valueOf(getName().charAt(0))+
+                    "."+" "+getSurname();
+        if (!getPatronymic().isEmpty() && getName().isEmpty())
+            return getSurname();
+        return String.valueOf(getName().charAt(0)) +
+                "." +
+                String.valueOf(getPatronymic().charAt(0)) +
+                "." +
+                " " + getSurname();
     }
 }
