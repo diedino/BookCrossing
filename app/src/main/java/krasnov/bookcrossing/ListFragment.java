@@ -47,10 +47,11 @@ public class ListFragment extends Fragment {
         booksList = view.findViewById(R.id.booksList);
         ShelfAdapter shelfAdapter = new ShelfAdapter(getContext(), R.layout.book_on_shelf, books);
         booksList.setAdapter(shelfAdapter);
-        /*AdapterView.OnItemClickListener itemClickListener = (parent, v, position, id) -> {
+        AdapterView.OnItemClickListener itemClickListener = (parent, v, position, id) -> {
             Book selectedState = (Book)parent.getItemAtPosition(position);
+            Toast.makeText(getContext(), "I was here", Toast.LENGTH_LONG).show();
         };
-        booksList.setOnItemClickListener(itemClickListener);*/
+        booksList.setOnItemClickListener(itemClickListener);
         //Toast.makeText(getContext(), "I was here", Toast.LENGTH_LONG).show();
 
         return view;

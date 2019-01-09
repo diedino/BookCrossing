@@ -58,10 +58,9 @@ public class AddNewBookFragment extends Fragment {
             public void onClick(View v) {
                 ListFragment fragment = new ListFragment();
                 ft = getFragmentManager().beginTransaction();
-                ft.setCustomAnimations(R.anim.slide_in_left,
-                        R.anim.slide_in_right);
+                ft.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right);
                 ft.addToBackStack(null);
-                ft.add(R.id.fragment_container, fragment).commit();
+                ft.replace(R.id.fragment_container, fragment).commit();
             }
         });
     }

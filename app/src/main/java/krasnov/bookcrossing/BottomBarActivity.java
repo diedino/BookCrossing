@@ -37,6 +37,7 @@ public class BottomBarActivity extends AppCompatActivity {
                                 break;
                             case R.id.bottombaritem_search:
                                 selectedFragment = new SearchFragment();
+                                //selectedFragment = new TestFragment();
                                 break;
                             case R.id.bottombaritem_list:
                                 selectedFragment = new ListFragment();

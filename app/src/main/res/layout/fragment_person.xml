@@ -25,7 +25,7 @@
                 android:id="@+id/img"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:src="@drawable/ic_person"
+                android:src="@drawable/avatar_in_circle"
                 app:civ_border_width="3dp"
                 app:civ_border_color="#F4AA53"/>
 
