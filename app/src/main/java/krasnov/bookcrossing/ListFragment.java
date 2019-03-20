@@ -24,7 +24,7 @@ public class ListFragment extends Fragment {
 
     private FragmentTransaction ft;
     FloatingActionButton fab;
-    private ArrayList<Book> books = new ArrayList();
+    private List<Book> books = new ArrayList();
     ListView booksList;
     @Nullable
     @Override

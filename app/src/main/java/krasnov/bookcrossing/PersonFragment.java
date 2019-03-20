@@ -62,11 +62,11 @@ public class PersonFragment extends Fragment {
                 imgClick.setImageBitmap(selectedImage);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Что-то пошло не так", Toast.LENGTH_LONG).show();
             }
 
         }else {
-            Toast.makeText(getContext(), "You haven't picked Image",Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Вы не выбрали изображения",Toast.LENGTH_LONG).show();
         }
     }
 }

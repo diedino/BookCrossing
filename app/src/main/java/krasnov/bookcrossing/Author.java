@@ -1,7 +1,7 @@
 package krasnov.bookcrossing;
 
 public class Author {
-    String name, surname, patronymic;
+    private String name, surname, patronymic;
 
     public Author(String name, String surname, String patronymic) {
         this.name = name;

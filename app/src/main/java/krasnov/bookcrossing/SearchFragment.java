@@ -21,9 +21,7 @@ import java.util.List;
 
 public class SearchFragment extends Fragment {
 
-    FloatingActionButton fab;
-    private ArrayList<Book> books = new ArrayList<>();
-    GridView booksList;
+    private List<Book> books = new ArrayList<>();
 
     @Nullable
     @Override
@@ -139,13 +137,6 @@ public class SearchFragment extends Fragment {
                 "Rofl",
                 "Про что-то интересное, всем советую",
                 R.drawable.zovktulhu));
-
-        RecyclerView myrv = (RecyclerView)view.findViewById(R.id.recyclerview_id);
-        myrv.setNestedScrollingEnabled(false);
-        RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(getContext(),books);
-        myAdapter.setHasStableIds(true);
-        myrv.setLayoutManager(new GridLayoutManager(getContext(),3));
-        myrv.setAdapter(myAdapter);
 
     }
 }
