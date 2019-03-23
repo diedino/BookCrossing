@@ -31,9 +31,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".BottomBarActivity">
-
-        </activity>
+        <activity android:name=".BottomBarActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
@@ -51,6 +49,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".RegistrationActivity"></activity>
     </application>
 
 </manifest>

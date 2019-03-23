@@ -29,7 +29,8 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         signUp.setOnClickListener(v->{
-
+            Intent myIntent = new Intent(this, RegistrationActivity.class);
+            startActivity(myIntent);
         });
     }
 }
