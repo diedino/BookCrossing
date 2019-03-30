@@ -27,22 +27,21 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     GoogleMap mGoogleMap;
     MapView mMapView;
     View mView;
 
-    //-----Markers-------
-    private Marker mBelorusskayaStation;
-    private Marker mKazanskayaStation;
-    private Marker mKurskayaStation;
-    //-----Markers-------
+    private List<Place> places= new ArrayList<>();
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_map, container, false);
-
         return mView;
     }
 
@@ -68,20 +67,18 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         Drawable circleDrawable = getResources().getDrawable(R.drawable.circle_shape, getContext().getTheme());
         BitmapDescriptor icon = getMarkerIconFromDrawable(circleDrawable);
 
-        mBelorusskayaStation = mGoogleMap.addMarker(new MarkerOptions()
-                .position(new LatLng(55.776775, 37.581460))
-                .title("Белорусский вокзал")
-                .icon(icon));
+        places.add(new Place(55.776775, 37.581460, "Белорусский вокзал","пл. Тверская Застава, 7"));
+        places.add(new Place(55.773611, 37.655670, "Казанский вокзал","Комсомольская пл., 2"));
+        places.add(new Place(55.757491, 37.660808, "Курский вокзал","пл. Курского Вокзала"));
 
-        mKazanskayaStation = mGoogleMap.addMarker(new MarkerOptions()
-                .position(new LatLng(55.773611, 37.655670))
-                .title("Казанский вокзал")
-                .icon(icon));
-
-        mKurskayaStation = mGoogleMap.addMarker(new MarkerOptions()
-                .position(new LatLng(55.757491, 37.660808))
-                .title("Курский вокзал")
-                .icon(icon));
+        for (Place place:places
+             ) {
+            Marker marker = mGoogleMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(place.getLatitude(),place.getLongitude()))
+                    .title(place.getName())
+                    .icon(icon));
+            marker.setTag(place);
+        }
 
         CameraPosition moscow = CameraPosition.builder().target(new LatLng(55.751498, 37.618767)).zoom(9.8f).bearing(0).tilt(45).build();
         googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(moscow));
