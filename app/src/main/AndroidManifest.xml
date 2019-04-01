@@ -31,7 +31,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".BottomBarActivity"></activity>
+        <activity android:name=".BottomBarActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
@@ -42,14 +42,15 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDqP-qNdqCrstYutaAJ4Nv8N27SXHbtTHs" />
         <!-- -MAPS -->
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".RegistrationActivity" />
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegistrationActivity"></activity>
     </application>
 
 </manifest>
