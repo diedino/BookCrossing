@@ -10,5 +10,8 @@
         <item name="colorControlNormal">#E98C1C</item>
     </style>
 
+    <style name="AppTheme.Launcher" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_theme</item>
+    </style>
 
 </resources>

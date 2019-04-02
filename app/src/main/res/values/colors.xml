@@ -15,4 +15,14 @@
     <color name="white">#FFFFFF</color>
     <color name="address">#2F7092</color>
     <color name="headings">#E98B1C</color>
+
+    <color name="ball1">#E98C1C</color>
+    <color name="ball2">#B96A0B</color>
+    <color name="ball3">#ffb62a</color>
+
+    <integer-array name="ballcolors">
+        <item>@color/ball1</item>
+        <item>@color/ball2</item>
+        <item>@color/ball3</item>
+    </integer-array>
 </resources>

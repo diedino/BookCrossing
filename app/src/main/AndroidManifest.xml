@@ -44,7 +44,9 @@
         <!-- -MAPS -->
         <activity android:name=".LoginActivity"/>
         <activity android:name=".RegistrationActivity" />
-        <activity android:name=".SplashActivity">
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/AppTheme.Launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
