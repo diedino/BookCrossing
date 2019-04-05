@@ -13,6 +13,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -38,31 +39,56 @@ public class RegistrationActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         createBtn.setOnClickListener(v -> {
-            mAuth.createUserWithEmailAndPassword(editTextEmail.getText().toString(),
-                    editTextPassword.getText().toString())
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()){
-
-                                User user = new User(editTextName.getText().toString().trim(),
-                                        editTextEmail.getText().toString().trim());
-
-                                Toast.makeText(RegistrationActivity.this, "Registered Successfully",
-                                        Toast.LENGTH_LONG).show();
-                            }
-                            else {
-                                Toast.makeText(RegistrationActivity.this, task.getException().getMessage(),
-                                        Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    });
-
+            registerUser();
         });
 
         textViewSignIn.setOnClickListener(v -> {
             Intent myIntent = new Intent(this, LoginActivity.class);
             startActivity(myIntent);
         });
+    }
+
+    private void registerUser() {
+        String name = editTextName.getText().toString().trim();
+        String email = editTextEmail.getText().toString().trim();
+        String password = editTextPassword.getText().toString().trim();
+
+        if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(RegistrationActivity.this, "Заполните все поля",
+                    Toast.LENGTH_LONG).show();
+        } else {
+            mAuth.createUserWithEmailAndPassword(editTextEmail.getText().toString(),
+                    editTextPassword.getText().toString())
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+
+                                User user = new User(name, email);
+
+                                FirebaseDatabase.getInstance().getReference("Users")
+                                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                        .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+
+                                            Toast.makeText(RegistrationActivity.this, "Registered Successfully",
+                                                    Toast.LENGTH_LONG).show();
+                                        } else {
+                                            Toast.makeText(RegistrationActivity.this, task.getException().getMessage(),
+                                                    Toast.LENGTH_LONG).show();
+                                        }
+                                    }
+                                });
+
+                            } else {
+                                Toast.makeText(RegistrationActivity.this, task.getException().getMessage(),
+                                        Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+        }
+
     }
 }
