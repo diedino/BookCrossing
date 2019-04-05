@@ -1,6 +1,9 @@
 package krasnov.bookcrossing;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ProgressBar;
@@ -15,6 +18,9 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         mProgress = (ProgressBar) findViewById(R.id.splash_screen_progress_bar);
+        Drawable progressDrawable = mProgress.getProgressDrawable().mutate();
+        progressDrawable.setColorFilter(Color.rgb(233, 140, 28), android.graphics.PorterDuff.Mode.SRC_IN);
+        mProgress.setProgressDrawable(progressDrawable);
         Thread myThread = new Thread() {
             @Override
             public void run() {
