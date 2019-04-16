@@ -13,6 +13,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -79,6 +80,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                     .icon(icon));
             marker.setTag(place);
         }
+
+        mGoogleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                Toast toast = Toast.makeText(getContext(),
+                        "Пора покормить кота!", Toast.LENGTH_SHORT);
+                toast.show();
+                return false;
+            }
+        });
 
         CameraPosition moscow = CameraPosition.builder().target(new LatLng(55.751498, 37.618767)).zoom(9.8f).bearing(0).tilt(45).build();
         googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(moscow));
