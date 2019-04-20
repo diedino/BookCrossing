@@ -25,6 +25,10 @@ public class Place {
         return longitude;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
     public String getName() {
         return name;
     }

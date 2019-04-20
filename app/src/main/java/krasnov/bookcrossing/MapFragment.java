@@ -84,9 +84,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         mGoogleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                Toast toast = Toast.makeText(getContext(),
-                        "Пора покормить кота!", Toast.LENGTH_SHORT);
-                toast.show();
+                Place place = (Place) marker.getTag();
+                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog();
+                Bundle args = new Bundle();
+                args.putString("name", place.getName());
+                args.putString("address", place.getAddress());
+                bottomSheetDialog.setArguments(args);
+                bottomSheetDialog.show(getFragmentManager(), "bottomSheet");
                 return false;
             }
         });
