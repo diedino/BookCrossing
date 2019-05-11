@@ -1,5 +1,8 @@
 package krasnov.bookcrossing;
-
+/*
+* Decided do not use this class, but it leaves for memory
+* by diedino
+* */
 public class Author {
     private String name, surname, patronymic;
 

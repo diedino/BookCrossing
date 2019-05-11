@@ -1,48 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/author"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/toolbar"
-            android:layout_marginStart="20dp"
-            android:fontFamily="@font/roboto"
-            android:text="Об авторе:"
-            android:textSize="30dp" />
-
-    <include
+        <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar_addnewbook" />
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/rTextSurname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/author">
-
-        <EditText
-            android:id="@+id/rSurname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:hint="Фамилия"
-            android:textSize="14sp" />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
+        <android.support.design.widget.TextInputLayout
         android:id="@+id/rTextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rTextSurname">
-
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
         <EditText
             android:id="@+id/rName"
@@ -50,42 +27,15 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:hint="Имя"
-            android:textSize="14sp" />
+            android:hint="Имя автора"
+            android:textSize="16sp" />
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/rTextPatronymic"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rTextName">
-
-
-        <EditText
-            android:id="@+id/rPatronymic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:hint="Отчество"
-            android:textSize="14sp" />
-    </android.support.design.widget.TextInputLayout>
-
-        <TextView
-            android:id="@+id/book"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rTextPatronymic"
-            android:layout_marginStart="20dp"
-            android:fontFamily="@font/roboto"
-            android:text="О книге:"
-            android:textSize="30dp" />
-
-    <android.support.design.widget.TextInputLayout
+        <android.support.design.widget.TextInputLayout
         android:id="@+id/rTextBookname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/book">
+            app:layout_constraintTop_toBottomOf="@id/rTextName">
 
         <EditText
             android:id="@+id/rBookname"
@@ -94,14 +44,14 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:hint="Название книги"
-            android:textSize="14sp" />
+            android:textSize="16sp" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/rTextISBN"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rTextBookname">
+        app:layout_constraintTop_toBottomOf="@id/rTextBookname">
 
 
         <EditText
@@ -111,25 +61,14 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:hint="ISBN"
-            android:textSize="14sp" />
+            android:textSize="16sp" />
     </android.support.design.widget.TextInputLayout>
-
-        <Spinner
-            android:id="@+id/genre_spinner"
-            style="@style/Widget.AppCompat.Spinner.Underlined"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rTextISBN"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:entries="@array/genre_array"
-            android:paddingTop="20dp" />
 
         <android.support.design.widget.TextInputLayout
         android:id="@+id/rTextDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/genre_spinner">
+            app:layout_constraintTop_toBottomOf="@id/rTextISBN">
 
 
             <EditText
@@ -139,17 +78,17 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:hint="Описание"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
     </android.support.design.widget.TextInputLayout>
 
         <Button
-            android:id="@+id/btnRegister"
+            android:id="@+id/btnAddBook"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/rTextDescription"
             android:layout_marginTop="5dp"
             android:background="@drawable/grad"
             android:text="Добавить"
-            android:textColor="@android:color/white" />
-    </RelativeLayout>
+            android:textColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/rTextDescription" />
+    </android.support.constraint.ConstraintLayout>
 </ScrollView>

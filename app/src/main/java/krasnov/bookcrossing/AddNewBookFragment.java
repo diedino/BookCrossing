@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toolbar;
@@ -19,30 +20,13 @@ import android.widget.Toolbar;
 public class AddNewBookFragment extends Fragment {
 
     private FragmentTransaction ft;
+    private Button addBook;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_addnewbook, container, false);
 
-        Spinner spinner = view.findViewById(R.id.genre_spinner);
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(getContext(),
-                R.array.genre_array, R.layout.spinner_item);
-        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                ((TextView) parentView.getChildAt(0)).setTextColor(Color.GRAY);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                ((TextView) parentView.getChildAt(0)).setTextColor(Color.GRAY);
-            }
-
-        });
 
         return view;
     }
@@ -63,5 +47,12 @@ public class AddNewBookFragment extends Fragment {
                 ft.replace(R.id.fragment_container, fragment).commit();
             }
         });
+        addBook = getView().findViewById(R.id.btnAddBook);
+        addBook.setOnClickListener(this::onAddClick);
+    }
+    private void onAddClick(View v) {
+        ListFragment fragment = new ListFragment();
+        ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_container, fragment).commit();
     }
 }

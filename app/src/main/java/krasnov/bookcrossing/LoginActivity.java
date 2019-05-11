@@ -33,13 +33,13 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editTextEmail;
     private EditText editTextPassword;
 
-    FirebaseAuth mAuth;
+    //FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        mAuth = FirebaseAuth.getInstance();
+        //mAuth = FirebaseAuth.getInstance();
 
         loginBtn = (Button) findViewById(R.id.btn_login);
         signUp = (TextView) findViewById(R.id.link_signup);
@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    private void userLogin() {
+   /* private void userLogin() {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-    }
+    }*/
 
     private void userLoginTest() throws IOException {
        
@@ -102,6 +102,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (sb.toString().equals("true")) {
                         Intent intent = new Intent(LoginActivity.this, BottomBarActivity.class);
+                        intent.putExtra("email", mEmail);
                         startActivity(intent);
                     }
                 }

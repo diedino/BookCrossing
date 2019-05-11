@@ -65,78 +65,35 @@ public class SearchFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        books.add(new Book(new Author("Иван", "Тургенев", "Сергеевич"),
+        books.add(new Book("Иван Тургенев",
                 "Отцы и Дети",
                 "123-3123",
-                "Rofl",
                 "Книга просто великоплепная, про что-то интересное",
                 R.drawable.otsiideti));
-        books.add(new Book(new Author("Говард", "Лавкрафт", ""),
+        books.add(new Book("Говард Лавкрафт",
                 "Зов Ктулху",
                 "534534-34",
-                "Rofl",
                 "Про что-то интересное, всем советую",
                 R.drawable.zovktulhu));
-        books.add(new Book(new Author("Иван", "Тургенев", "Сергеевич"),
+        books.add(new Book("Иван Тургенев",
                 "Отцы и Дети",
                 "123-3123",
-                "Rofl",
                 "Книга просто великоплепная, про что-то интересное",
                 R.drawable.otsiideti));
-        books.add(new Book(new Author("Говард", "Лавкрафт", ""),
+        books.add(new Book("Говард Лавкрафт",
                 "Зов Ктулху",
                 "534534-34",
-                "Rofl",
                 "Про что-то интересное, всем советую",
                 R.drawable.zovktulhu));
-        books.add(new Book(new Author("Иван", "Тургенев", "Сергеевич"),
+        books.add(new Book("Иван Тургенев",
                 "Отцы и Дети",
                 "123-3123",
-                "Rofl",
                 "Книга просто великоплепная, про что-то интересное",
                 R.drawable.otsiideti));
-        books.add(new Book(new Author("Говард", "Лавкрафт", ""),
+        books.add(new Book("Говард Лавкрафт",
                 "Зов Ктулху",
                 "534534-34",
-                "Rofl",
                 "Про что-то интересное, всем советую",
                 R.drawable.zovktulhu));
-        books.add(new Book(new Author("Иван", "Тургенев", "Сергеевич"),
-                "Отцы и Дети",
-                "123-3123",
-                "Rofl",
-                "Книга просто великоплепная, про что-то интересное",
-                R.drawable.otsiideti));
-        books.add(new Book(new Author("Говард", "Лавкрафт", ""),
-                "Зов Ктулху",
-                "534534-34",
-                "Rofl",
-                "Про что-то интересное, всем советую",
-                R.drawable.zovktulhu));
-        books.add(new Book(new Author("Иван", "Тургенев", "Сергеевич"),
-                "Отцы и Дети",
-                "123-3123",
-                "Rofl",
-                "Книга просто великоплепная, про что-то интересное",
-                R.drawable.otsiideti));
-        books.add(new Book(new Author("Говард", "Лавкрафт", ""),
-                "Зов Ктулху",
-                "534534-34",
-                "Rofl",
-                "Про что-то интересное, всем советую",
-                R.drawable.zovktulhu));
-        books.add(new Book(new Author("Иван", "Тургенев", "Сергеевич"),
-                "Отцы и Дети",
-                "123-3123",
-                "Rofl",
-                "Книга просто великоплепная, про что-то интересное",
-                R.drawable.otsiideti));
-        books.add(new Book(new Author("Говард", "Лавкрафт", ""),
-                "Зов Ктулху",
-                "534534-34",
-                "Rofl",
-                "Про что-то интересное, всем советую",
-                R.drawable.zovktulhu));
-
     }
 }
