@@ -26,6 +26,14 @@ public class Book {
         code = randomCode();
         id++;
     }
+    public Book(String author, String title, String isbn, String description, String code) {
+        this.author = author;
+        this.title = title;
+        this.isbn = isbn;
+        this.description = description;
+        this.code = code;
+        id++;
+    }
 
     private String randomCode() {
         StringBuilder builder = new StringBuilder();
@@ -59,5 +67,9 @@ public class Book {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public int getIconResource() {
+        return iconResource;
     }
 }

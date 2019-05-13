@@ -42,7 +42,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDqP-qNdqCrstYutaAJ4Nv8N27SXHbtTHs" />
         <!-- -MAPS -->
-        <activity android:name=".LoginActivity"/>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".RegistrationActivity" />
         <activity
             android:name=".SplashActivity"
@@ -53,6 +53,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".BookOnPlace"></activity>
     </application>
 
 </manifest>

@@ -83,6 +83,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/taken"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
@@ -120,6 +121,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/given"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
@@ -192,11 +194,12 @@
                 android:orientation="vertical">
 
                 <Button
+                    android:id="@+id/settingBtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/grad"
                     android:text="Настройки"
-                    android:textColor="@color/white"
-                    android:background="@drawable/grad"/>
+                    android:textColor="@color/white" />
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"

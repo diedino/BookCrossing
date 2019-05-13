@@ -23,7 +23,6 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText editTextPassword;
     private EditText editTextName;
 
-    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +35,6 @@ public class RegistrationActivity extends AppCompatActivity {
         editTextPassword = (EditText) findViewById(R.id.input_password);
         editTextName = (EditText) findViewById(R.id.input_name);
 
-        mAuth = FirebaseAuth.getInstance();
 
         createBtn.setOnClickListener(v -> {
             registerUser();
@@ -57,37 +55,7 @@ public class RegistrationActivity extends AppCompatActivity {
             Toast.makeText(RegistrationActivity.this, "Заполните все поля",
                     Toast.LENGTH_LONG).show();
         } else {
-            mAuth.createUserWithEmailAndPassword(editTextEmail.getText().toString(),
-                    editTextPassword.getText().toString())
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
 
-                                User user = new User(name, email);
-
-                                FirebaseDatabase.getInstance().getReference("Users")
-                                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                        .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()) {
-
-                                            Toast.makeText(RegistrationActivity.this, "Registered Successfully",
-                                                    Toast.LENGTH_LONG).show();
-                                        } else {
-                                            Toast.makeText(RegistrationActivity.this, task.getException().getMessage(),
-                                                    Toast.LENGTH_LONG).show();
-                                        }
-                                    }
-                                });
-
-                            } else {
-                                Toast.makeText(RegistrationActivity.this, task.getException().getMessage(),
-                                        Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    });
         }
 
     }

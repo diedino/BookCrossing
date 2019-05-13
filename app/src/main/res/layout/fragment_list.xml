@@ -9,8 +9,8 @@
     <ListView
         android:id="@+id/booksList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true" />
 
 
     <android.support.design.widget.FloatingActionButton
@@ -21,11 +21,22 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="20dp"
         android:baselineAlignBottom="false"
         android:src="@drawable/ic_add"
         app:backgroundTint="#E98C1C" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="156dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/grad"
+        android:text="Использовать код"
+        android:textColor="@color/white" />
 
 
 </RelativeLayout>

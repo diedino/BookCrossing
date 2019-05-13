@@ -42,6 +42,9 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
 
@@ -55,7 +58,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_map, container, false);
-        mapData();
+        AsyncCall task = new AsyncCall();
+        task.execute();
+        try {
+            task.get(2000, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        }
         return mView;
     }
 
@@ -81,11 +94,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         Drawable circleDrawable = getResources().getDrawable(R.drawable.circle_shape, getContext().getTheme());
         BitmapDescriptor icon = getMarkerIconFromDrawable(circleDrawable);
 
-        places.add(new Place(55.776775, 37.581460, "Белорусский вокзал","пл. Тверская Застава, 7"));
-        places.add(new Place(55.773611, 37.655670, "Казанский вокзал","Комсомольская пл., 2"));
-        places.add(new Place(55.757491, 37.660808, "Курский вокзал","пл. Курского Вокзала"));
-
-
         System.out.println("Array places size: "+places.size());
         for (Place place:places
              ) {
@@ -102,8 +110,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 Place place = (Place) marker.getTag();
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog();
                 Bundle args = new Bundle();
+                Bundle bundle = getArguments();
                 args.putString("name", place.getName());
                 args.putString("address", place.getAddress());
+                args.putString("email", bundle.getString("email"));
                 bottomSheetDialog.setArguments(args);
                 bottomSheetDialog.show(getFragmentManager(), "bottomSheet");
                 return false;
@@ -122,48 +132,47 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         drawable.draw(canvas);
         return BitmapDescriptorFactory.fromBitmap(bitmap);
     }
+    private class AsyncCall extends AsyncTask<Void, Void, Void> {
 
-    private void mapData() {
-        AsyncTask.execute(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    URLConnection connection = new URL("http://192.168.1.46:8080/allplaces").openConnection();
-                    double latitude=0, longitude=0;
-                    String name="", address="";
-                    InputStream is = connection.getInputStream();
-                    InputStreamReader reader = new InputStreamReader(is);
+        @Override
+        protected Void doInBackground(Void... voids) {
+            try {
+                URLConnection connection = new URL("http://192.168.1.46:8080/allplaces").openConnection();
+                double latitude=0, longitude=0;
+                String name="", address="";
+                InputStream is = connection.getInputStream();
+                InputStreamReader reader = new InputStreamReader(is);
 
-                    char[] buffer = new char[256];
-                    int rc;
+                char[] buffer = new char[256];
+                int rc;
 
-                    StringBuilder sb = new StringBuilder();
+                StringBuilder sb = new StringBuilder();
 
-                    while ((rc = reader.read(buffer)) != -1)
-                        sb.append(buffer, 0, rc);
+                while ((rc = reader.read(buffer)) != -1)
+                    sb.append(buffer, 0, rc);
 
-                    reader.close();
+                reader.close();
 
-                    JSONArray jsonarray = new JSONArray(sb.toString());
-                    for (int i = 0; i < jsonarray.length(); i++) {
-                        JSONObject jsonobject = jsonarray.getJSONObject(i);
-                        name = jsonobject.getString("name");
-                        System.out.println(name);
-                        address = jsonobject.getString("address");
-                        System.out.println(address);
-                        latitude = Double.valueOf(jsonobject.getString("latitude"));
-                        longitude = Double.valueOf(jsonobject.getString("longitude"));
-                        places.add(new Place(latitude, longitude, name, address));
-                    }
-                    System.out.println(sb);
-
+                JSONArray jsonarray = new JSONArray(sb.toString());
+                for (int i = 0; i < jsonarray.length(); i++) {
+                    JSONObject jsonobject = jsonarray.getJSONObject(i);
+                    name = jsonobject.getString("name");
+                    System.out.println(name);
+                    address = jsonobject.getString("address");
+                    System.out.println(address);
+                    latitude = Double.valueOf(jsonobject.getString("latitude"));
+                    longitude = Double.valueOf(jsonobject.getString("longitude"));
+                    places.add(new Place(latitude, longitude, name, address));
                 }
-                catch (IOException e) {
-                    System.out.println("EXCEPTION");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                System.out.println(sb);
+
             }
-        });
+            catch (IOException e) {
+                System.out.println("EXCEPTION");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
     }
 }

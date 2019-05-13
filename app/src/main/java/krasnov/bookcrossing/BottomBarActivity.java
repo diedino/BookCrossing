@@ -33,6 +33,7 @@ public class BottomBarActivity extends AppCompatActivity {
     private String mName;
     private List<Book> books;
     private String name, email;
+    Bundle args;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +42,12 @@ public class BottomBarActivity extends AppCompatActivity {
         personData();
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_nav);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
-
+        MapFragment fragment = new MapFragment();
+        args = new Bundle();
+        args.putString("email", email);
+        fragment.setArguments(args);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new MapFragment()).commit();
+                fragment).commit();
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 item -> {
@@ -51,6 +55,9 @@ public class BottomBarActivity extends AppCompatActivity {
                     switch (item.getItemId()) {
                         case R.id.bottombaritem_map:
                             selectedFragment = new MapFragment();
+                            args = new Bundle();
+                            args.putString("email", email);
+                            selectedFragment.setArguments(args);
                             break;
                         case R.id.bottombaritem_search:
                             selectedFragment = new SearchFragment();
@@ -58,10 +65,14 @@ public class BottomBarActivity extends AppCompatActivity {
                             break;
                         case R.id.bottombaritem_list:
                             selectedFragment = new ListFragment();
+                            args = new Bundle();
+                            args.putString("email", email);
+                            args.putString("name", name);
+                            selectedFragment.setArguments(args);
                             break;
                         case R.id.bottombaritem_person:
                             selectedFragment = new PersonFragment();
-                            Bundle args = new Bundle();
+                            args = new Bundle();
                             args.putString("email", email);
                             args.putString("name", name);
                             selectedFragment.setArguments(args);

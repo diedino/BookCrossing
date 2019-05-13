@@ -34,8 +34,9 @@ public class ShelfAdapter extends ArrayAdapter<Book> {
 
         Book one = books.get(position);
 
-        //flagView.setImageResource(one.getIconResource());
+        flagView.setImageResource(one.getIconResource());
         //author.setText(one.getAuthorToString());
+        author.setText(one.getAuthor());
         title.setText(one.getTitle());
         capitalView.setText(one.getDescription());
 
