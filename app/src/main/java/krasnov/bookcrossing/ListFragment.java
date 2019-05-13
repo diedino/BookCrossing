@@ -36,7 +36,7 @@ import java.util.concurrent.TimeoutException;
 public class ListFragment extends Fragment {
 
     private FragmentTransaction ft;
-    FloatingActionButton fab;
+    FloatingActionButton fab, fab_code;
     private List<Book> books = new ArrayList();
     ListView booksList;
 
@@ -84,6 +84,7 @@ public class ListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         fab = getView().findViewById(R.id.fab);
+        fab_code = getView().findViewById(R.id.fab_code);
         super.onCreate(savedInstanceState);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,7 +101,21 @@ public class ListFragment extends Fragment {
                 ft.replace(R.id.fragment_container, fragment).commit();
             }
         });
-
+        fab_code.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fab_code.hide();
+                AddBookByCodeFragment fragment = new AddBookByCodeFragment();
+                Bundle args = new Bundle();
+                Bundle bundle = getArguments();
+                args.putString("email", bundle.getString("email"));
+                fragment.setArguments(args);
+                ft = getFragmentManager().beginTransaction();
+                ft.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
+                ft.addToBackStack(null);
+                ft.replace(R.id.fragment_container, fragment).commit();
+            }
+        });
     }
 
 

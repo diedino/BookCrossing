@@ -12,6 +12,21 @@
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true" />
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="80dp"
+        android:baselineAlignBottom="false"
+        android:layout_above="@id/fab"
+        android:src="@drawable/ic_outline_code_24px"
+        app:backgroundTint="#E98C1C" />
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -27,16 +42,6 @@
         android:src="@drawable/ic_add"
         app:backgroundTint="#E98C1C" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="156dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/grad"
-        android:text="Использовать код"
-        android:textColor="@color/white" />
 
 
 </RelativeLayout>
