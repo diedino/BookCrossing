@@ -47,6 +47,7 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
                 Intent intent = new Intent(BottomSheetDialog.this.getActivity(), BookOnPlace.class);
                 Bundle bundle = getArguments();
                 intent.putExtra("email", bundle.getString("email"));
+                intent.putExtra("placename", bundle.getString("name"));
                 startActivity(intent);
             }
         });
